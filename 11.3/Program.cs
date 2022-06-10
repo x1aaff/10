@@ -26,7 +26,6 @@ namespace _11._3
             }
 
             string jsonString = JsonSerializer.Serialize(clients);
-            //if (!File.Exists("clients.json")) File.Create("clients.json").Close();
             File.WriteAllText("clients.json", jsonString);
         }
         public static List<Client> clients = new List<Client>();
