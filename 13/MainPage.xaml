@@ -1,0 +1,57 @@
+﻿<Page x:Class="_13.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:_13"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="MainPage">
+
+    <Grid Background="DarkGreen">
+        <ListView x:Name="lvClients" Margin="10,10,490,61" Width="330" HorizontalAlignment="Left" SelectionChanged="lvClients_selchng">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Имя" DisplayMemberBinding="{Binding FirstName}" Width="100"/>
+                    <GridViewColumn Header="Фамилия" DisplayMemberBinding="{Binding LastName}" Width="100"/>
+                    <GridViewColumn Header="Телефон" DisplayMemberBinding="{Binding PhoneNumber}" Width="100"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ListBox x:Name="lbAccounts" Margin="345,49,0,0" HorizontalAlignment="Left" Width="180" VerticalAlignment="Top" Height="190" SelectionChanged="lbAccounts_selchng">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Id}" Foreground="Gray" FontSize="10"/>
+                        <TextBlock Text="{Binding Worth}"/>
+                        <TextBlock Text="австралийских долларов" FontSize="10"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <TextBlock HorizontalAlignment="Left" Margin="345,10,0,0" Text="Accounts" TextWrapping="Wrap" VerticalAlignment="Top" Height="34" Width="180" FontSize="22" FontFamily="Wide Latin" Foreground="White"/>
+        <Button x:Name="OpenAnoAccountBtn" Content="+A" HorizontalAlignment="Left" Margin="485,244,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.602,-0.784" Height="40" Width="40" Click="OpenAnoAccountBtn_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="345,244,0,0" Text="Открыть клиенту недепозитный счет" TextWrapping="Wrap" VerticalAlignment="Top" Height="40" Width="140" Foreground="White"/>
+        <Button x:Name="CloseAccountBtn" Content="X" HorizontalAlignment="Left" Margin="485,334,0,0" VerticalAlignment="Top" Width="40" Height="40" Click="CloseAccountBtn_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="345,334,0,0" Text="Закрыть клиенту выбранный счет" TextWrapping="Wrap" VerticalAlignment="Top" Height="40" Width="140" Foreground="#FF7A7A7A"/>
+
+        <ComboBox x:Name="cbAccounts2" DisplayMemberPath="Id" HorizontalAlignment="Left" Margin="543,96,0,0" VerticalAlignment="Top" Width="180"/>
+        <TextBlock HorizontalAlignment="Left" Margin="544,35,0,0" Text="transfer" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="180" Foreground="White" FontSize="18" FontFamily="Segoe Script" IsEnabled="False"/>
+        <Button x:Name="TransferBtn" Content="&gt;" HorizontalAlignment="Left" Margin="684,185,0,0" VerticalAlignment="Top" Width="40" Height="40" Click="TransferBtn_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="543,185,0,0" Text="Перевести на выбранный счет" TextWrapping="Wrap" VerticalAlignment="Top" Height="40" Width="136" Foreground="White"/>
+        <TextBox x:Name="TransferSumBox" HorizontalAlignment="Left" Margin="543,144,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" Height="29" FontSize="18"/>
+        <TextBlock HorizontalAlignment="Left" Margin="543,123,0,0" Text="Сумма перевода" TextWrapping="Wrap" VerticalAlignment="Top" Width="161" FontWeight="Bold"/>
+        <Button x:Name="OpenDepAccountBtn" Content="+D" HorizontalAlignment="Left" Margin="485,289,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.602,-0.784" Height="40" Width="40" Click="OpenDepAccountBtn_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="345,289,0,0" Text="Открыть клиенту депозитный счет" TextWrapping="Wrap" VerticalAlignment="Top" Height="40" Width="140" Foreground="White"/>
+
+        <TextBlock HorizontalAlignment="Left" Margin="543,244,0,0" Text="deposit" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="180" Foreground="White" FontSize="18" FontFamily="Segoe Script" IsEnabled="False"/>
+        <TextBox x:Name="DepositSumBox" HorizontalAlignment="Left" Margin="543,280,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" Height="29" FontSize="18"/>
+        <TextBlock HorizontalAlignment="Left" Margin="543,325,0,0" Text="Пополнить выбранный Account" TextWrapping="Wrap" VerticalAlignment="Top" Height="40" Width="136" Foreground="White"/>
+        <Button x:Name="DepositBtn" Content="+" HorizontalAlignment="Left" Margin="684,325,0,0" VerticalAlignment="Top" Width="40" Height="40" Click="DepositBtn_Click" />
+        <ComboBox x:Name="cbClientalTransfer" DisplayMemberPath="PhoneNumber" HorizontalAlignment="Left" Margin="543,69,0,0" VerticalAlignment="Top" Width="180" SelectionChanged="cbClientalTransfer_selchng"/>
+        <TextBlock HorizontalAlignment="Left" Margin="728,69,0,0" Text="Кому" TextWrapping="Wrap" VerticalAlignment="Top" Width="52" Height="22" FontSize="16" FontFamily="Franklin Gothic Heavy" Foreground="Black"/>
+        <TextBlock HorizontalAlignment="Left" Margin="728,96,0,0" Text="Счет" TextWrapping="Wrap" VerticalAlignment="Top" Width="52" Height="22" FontSize="16" FontFamily="Franklin Gothic Heavy" Foreground="Black"/>
+
+
+    </Grid>
+</Page>
