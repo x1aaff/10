@@ -22,20 +22,11 @@ namespace _13
         {
 
         }
-
-        /*public void Open()  //old
-        {
-            ClientAccounts.Add(new Account());
-        }*/
         public void Open<T>()
             where T : Account, new()
         {
             ClientAccounts.Add(new T());
         }
-        /*public void Close(object account) //old
-        {
-            ClientAccounts.Remove((Account)account);
-        }*/
         public void Close<T>(T account)
             where T : Account
         {

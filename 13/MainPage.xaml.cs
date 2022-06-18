@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace _13
 {
@@ -30,17 +18,9 @@ namespace _13
         {
             lbAccounts.ItemsSource = (lvClients.SelectedItem as Client).ClientAccounts;
         }
-
-        /*private void OpenAccountBtn_Click(object sender, RoutedEventArgs e)
-        {
-            (lvClients.SelectedItem as Client).Open();
-            lbAccounts.Items.Refresh();
-        }*/
-
         private void CloseAccountBtn_Click(object sender, RoutedEventArgs e)
         {
             (lvClients.SelectedItem as Client).Close(lbAccounts.SelectedItem as Account);
-            //MessageBox.Show(lbAccounts.SelectedItem.ToString());
             lbAccounts.Items.Refresh();
         }
 
@@ -58,18 +38,6 @@ namespace _13
 
         private void TransferBtn_Click(object sender, RoutedEventArgs e)
         {
-            /*if ((lbAccounts.SelectedItem as Account).
-                MakeTransferTo(cbAccounts2.SelectedItem as Account, 
-                double.Parse(TransferSumBox.Text))
-                )
-            {
-                lbAccounts.Items.Refresh();
-            }
-            else
-            {
-                MessageBox.Show("недостаточно средств");
-                lbAccounts.Items.Refresh();
-            }*/
             if ((lbAccounts.SelectedItem as Account).
                 SendTransfer(cbClientalTransfer.SelectedItem as Client,
                 cbAccounts2.SelectedItem as Account,

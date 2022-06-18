@@ -11,24 +11,6 @@
             Id = ++count;
             Worth = worth;
         }
-
-        /*public bool MakeTransferTo(Account account, double sum)
-        {
-            if (sum > Worth)
-            {
-                return false;
-            }
-            Transfer<Account> transfer = new Transfer<Account>()
-            {
-                FromAccount = this,
-                ToAccount = account,
-                Sum = sum
-            };
-            Worth -= transfer.Sum;
-            account.Worth += transfer.Sum;
-            return true;
-        }*/
-
         public bool SendTransfer(Client toClient, Account toAccount, double sum)
         {
             if (sum > Worth)
@@ -48,20 +30,6 @@
             put.TargetAccount.Worth += put.PutWorth;
         }
     }
-
-    /*class Transfer<T>
-    {
-        private static int count = 0;
-        public int Id { get; set; }
-        public Transfer()
-        {
-            Id = ++count;
-        }
-        public T FromAccount { get; set; }
-        public T ToAccount { get; set; }
-        public double Sum { get; set; }
-    }*/
-
     interface IPushable<in V>
     {
         void PushWithSum(double sum);

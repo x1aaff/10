@@ -26,12 +26,6 @@ namespace _13
                 clients[i].ClientAccounts[0].Worth = random.Next(100000);
                 clients[i].Open<AnotherAccount>();
                 clients[i].ClientAccounts[1].Worth = random.Next(10000);
-                /*for (int j = 0; j < random.Next(1,4); j++)
-                {
-                    clients[i].Open();
-                    clients[i].ClientAccounts[j].Worth = random.Next(100000);
-                    Debug.WriteLine(clients[i].ClientAccounts[j].Worth);
-                }*/
             }
 
             return clients;
