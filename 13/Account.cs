@@ -1,4 +1,6 @@
-﻿namespace _13
+﻿using System;
+
+namespace _13
 {
     class Account : Client
     {
@@ -21,7 +23,8 @@
             IPushable<Account> pushableAccounts = new Stack<Client>(toClient, toAccount);
             pushableAccounts.PushWithSum(sum);
             Worth -= sum;
-            string notificationMsg = $"Со счёта id{this.Id} {sum} а.д. направлено " +
+            string notificationMsg = $"{DateTime.Now.ToShortTimeString()}: " +
+                $"Со счёта id{this.Id} {sum} а.д. направлено " +
                 $"на счёт id{toAccount.Id} клиента {toClient.PhoneNumber}.";
             AccountNotify?.Invoke(notificationMsg);
             return true;
@@ -32,7 +35,8 @@
         {
             IPut<Account> put = new Put<T>(putValue, targetAccount);
             put.TargetAccount.Worth += put.PutWorth;
-            string notificationMsg = $"Счёт id{targetAccount.Id} пополнен на {put.PutWorth} а.д.";
+            string notificationMsg = $"{DateTime.Now.ToShortTimeString()}: " +
+                $"Счёт id{targetAccount.Id} пополнен на {put.PutWorth} а.д.";
             AccountNotify?.Invoke(notificationMsg);
         }
     }

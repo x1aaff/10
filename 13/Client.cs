@@ -28,14 +28,16 @@ namespace _13
         {
             var a = new T();
             ClientAccounts.Add(a);
-            string notificationMsg = $"Открыт {typeof(T)} с id{a.Id} для клиента {this.PhoneNumber}.";
+            string notificationMsg = $"{DateTime.Now.ToShortTimeString()}: " +
+                $"Открыт {typeof(T)} с id{a.Id} для клиента {this.PhoneNumber}.";
             Notify?.Invoke(notificationMsg);
         }
         public void Close<T>(T account)
             where T : Account
         {
             Debug.WriteLine(account.Id);
-            string notificationMsg = $"Закрыт {typeof(T)} с id{account.Id} для клиента {this.PhoneNumber}." +
+            string notificationMsg = $"{DateTime.Now.ToShortTimeString()}: " +
+                $"Закрыт {typeof(T)} с id{account.Id} для клиента {this.PhoneNumber}." +
                 $"\n На счёте было {account.Worth} а.д.";
             Notify?.Invoke(notificationMsg);
             this.ClientAccounts.Remove(account);
