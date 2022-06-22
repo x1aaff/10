@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:_13"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="450" d:DesignWidth="1100"
       Title="MainPage">
 
     <Grid Background="DarkGreen">
@@ -36,7 +36,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="345,334,0,0" Text="Закрыть клиенту выбранный счет" TextWrapping="Wrap" VerticalAlignment="Top" Height="40" Width="140" Foreground="#FF7A7A7A"/>
 
         <ComboBox x:Name="cbAccounts2" DisplayMemberPath="Id" HorizontalAlignment="Left" Margin="543,96,0,0" VerticalAlignment="Top" Width="180"/>
-        <TextBlock HorizontalAlignment="Left" Margin="544,35,0,0" Text="transfer" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="180" Foreground="White" FontSize="18" FontFamily="Segoe Script" IsEnabled="False"/>
+        <TextBlock HorizontalAlignment="Left" Margin="543,29,0,0" Text="transfer" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="180" Foreground="White" FontSize="18" FontFamily="Segoe Script" IsEnabled="False"/>
         <Button x:Name="TransferBtn" Content="&gt;" HorizontalAlignment="Left" Margin="684,185,0,0" VerticalAlignment="Top" Width="40" Height="40" Click="TransferBtn_Click"/>
         <TextBlock HorizontalAlignment="Left" Margin="543,185,0,0" Text="Перевести на выбранный счет" TextWrapping="Wrap" VerticalAlignment="Top" Height="40" Width="136" Foreground="White"/>
         <TextBox x:Name="TransferSumBox" HorizontalAlignment="Left" Margin="543,144,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" Height="29" FontSize="18"/>
@@ -52,6 +52,12 @@
         <TextBlock HorizontalAlignment="Left" Margin="728,69,0,0" Text="Кому" TextWrapping="Wrap" VerticalAlignment="Top" Width="52" Height="22" FontSize="16" FontFamily="Franklin Gothic Heavy" Foreground="Black"/>
         <TextBlock HorizontalAlignment="Left" Margin="728,96,0,0" Text="Счет" TextWrapping="Wrap" VerticalAlignment="Top" Width="52" Height="22" FontSize="16" FontFamily="Franklin Gothic Heavy" Foreground="Black"/>
 
-
+        <Popup x:Name="popup1" Placement="Mouse" StaysOpen="False" AllowsTransparency="True">
+            <TextBlock x:Name="popup1Text" Foreground="White" TextWrapping="Wrap" Opacity="0.9" Background="Gray" Width="180" TextAlignment="Center" >
+            </TextBlock>
+        </Popup>
+        <ListBox x:Name="logLb" Margin="785,69,0,61" HorizontalAlignment="Left" Width="289">
+        </ListBox>
+        <TextBlock HorizontalAlignment="Left" Margin="785,29,0,0" Text="history logs" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="180" Foreground="White" FontSize="18" FontFamily="Segoe Script" IsEnabled="False"/>
     </Grid>
 </Page>

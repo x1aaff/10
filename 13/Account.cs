@@ -2,6 +2,7 @@
 {
     class Account : Client
     {
+        public static event NotifyDelegate AccountNotify;
         private static int count = 0;
         public int Id { get; set; }
         public double Worth { get; set; }
@@ -20,6 +21,9 @@
             IPushable<Account> pushableAccounts = new Stack<Client>(toClient, toAccount);
             pushableAccounts.PushWithSum(sum);
             Worth -= sum;
+            string notificationMsg = $"Со счёта id{this.Id} {sum} а.д. направлено " +
+                $"на счёт id{toAccount.Id} клиента {toClient.PhoneNumber}.";
+            AccountNotify?.Invoke(notificationMsg);
             return true;
         }
 
@@ -28,6 +32,8 @@
         {
             IPut<Account> put = new Put<T>(putValue, targetAccount);
             put.TargetAccount.Worth += put.PutWorth;
+            string notificationMsg = $"Счёт id{targetAccount.Id} пополнен на {put.PutWorth} а.д.";
+            AccountNotify?.Invoke(notificationMsg);
         }
     }
     interface IPushable<in V>

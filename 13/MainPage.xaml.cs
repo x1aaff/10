@@ -12,6 +12,21 @@ namespace _13
         {
             InitializeComponent();
             lvClients.ItemsSource = Manager.clientsList;
+
+            popup1.PopupAnimation = System.Windows.Controls.Primitives.PopupAnimation.Slide;
+
+            Client.Notify += Manager.LogAction;
+            Client.Notify += ShowNotification;
+            Account.AccountNotify += Manager.LogAction;
+            Account.AccountNotify += ShowNotification;
+
+            logLb.ItemsSource = Manager.logs;
+        }
+        private void ShowNotification(string param)
+        {
+            popup1Text.Text = param;
+            logLb.Items.Refresh();
+            popup1.IsOpen = true;
         }
 
         private void lvClients_selchng(object sender, SelectionChangedEventArgs e)

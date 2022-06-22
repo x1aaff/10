@@ -3,8 +3,14 @@ using System.Collections.Generic;
 
 namespace _13
 {
+    public delegate void NotifyDelegate(string msg);
     class Manager
     {
+        public static List<string> logs = new List<string>();
+        public static void LogAction(string action)
+        {
+            logs.Add(action);
+        }
         public static List<Client> GenerateClients(int number = 30)
         {
             Random random = new Random();
