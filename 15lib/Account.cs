@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace _13
+namespace _15lib
 {
-    class Account : Client
+    public class Account : Client
     {
         public static event NotifyDelegate AccountNotify;
         private static int count = 0;
@@ -16,18 +16,25 @@ namespace _13
         }
         public bool SendTransfer(Client toClient, Account toAccount, double sum)
         {
-            if (sum > Worth)
+            try
+            {
+                if (sum > Worth)
+                {
+                    throw new OverdraftException();
+                }
+                IPushable<Account> pushableAccounts = new Stack<Client>(toClient, toAccount);
+                pushableAccounts.PushWithSum(sum);
+                Worth -= sum;
+                string notificationMsg = $"{DateTime.Now.ToShortTimeString()}: " +
+                    $"Со счёта id{this.Id} {sum} а.д. направлено " +
+                    $"на счёт id{toAccount.Id} клиента {toClient.PhoneNumber}.";
+                AccountNotify?.Invoke(notificationMsg);
+                return true;
+            }
+            catch (OverdraftException)
             {
                 return false;
             }
-            IPushable<Account> pushableAccounts = new Stack<Client>(toClient, toAccount);
-            pushableAccounts.PushWithSum(sum);
-            Worth -= sum;
-            string notificationMsg = $"{DateTime.Now.ToShortTimeString()}: " +
-                $"Со счёта id{this.Id} {sum} а.д. направлено " +
-                $"на счёт id{toAccount.Id} клиента {toClient.PhoneNumber}.";
-            AccountNotify?.Invoke(notificationMsg);
-            return true;
         }
 
         static public void Deposit<T>(double putValue, T targetAccount)
@@ -67,7 +74,7 @@ namespace _13
         T TargetAccount { get; }
         double PutWorth { get; }
     }
-    
+
     class Put<T> : IPut<T>
     {
         private double putWorth;
@@ -88,13 +95,13 @@ namespace _13
         }
     }
 
-    class DepositAccount : Account
+    public class DepositAccount : Account
     {
         //логика депозитного
         public DepositAccount() : base() { }
     }
 
-    class AnotherAccount : Account
+    public class AnotherAccount : Account
     {
         //логика недепозитного
         public AnotherAccount() : base() { }

@@ -1,11 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace _13
+namespace _15lib
 {
     public delegate void NotifyDelegate(string msg);
-    class Manager
+    
+    static class Ext
     {
+        static Random random2 = new Random();
+        public static void FillDepositAcc(this Client client)
+        {
+            client.ClientAccounts[0].Worth = random2.Next(100000);
+        }
+        public static void FillAnotherAcc(this Client client)
+        {
+            client.ClientAccounts[1].Worth = random2.Next(10000);
+        }
+    }
+    public class Manager
+    {
+        static int constNumber = 30;
+        
         public static List<string> logs = new List<string>();
         public static void LogAction(string action)
         {
@@ -24,14 +39,14 @@ namespace _13
             for (int i = 0; i < number; i++)
             {
                 clients.Add(new Client(
-                    names[random.Next(8)], 
-                    names[random.Next(8)] + "ов", 
+                    names[random.Next(8)],
+                    names[random.Next(8)] + "ов",
                     random.Next(1000000, 10000000).ToString())
                     );
                 clients[i].Open<DepositAccount>();
-                clients[i].ClientAccounts[0].Worth = random.Next(100000);
+                clients[i].FillDepositAcc();
                 clients[i].Open<AnotherAccount>();
-                clients[i].ClientAccounts[1].Worth = random.Next(10000);
+                clients[i].FillAnotherAcc();
             }
 
             return clients;

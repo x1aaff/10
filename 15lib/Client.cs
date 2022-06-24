@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace _13
+namespace _15lib
 {
-    class Client
+    public class Client
     {
         public static event NotifyDelegate Notify;
         public string FirstName { get; set; }
@@ -28,7 +28,7 @@ namespace _13
         {
             var a = new T();
             ClientAccounts.Add(a);
-            string notificationMsg = $"{DateTime.Now.ToShortTimeString()}: " +
+            string notificationMsg = $"{DateTime.Now.ToShortTimeString()}a: " +
                 $"Открыт {typeof(T)} с id{a.Id} для клиента {this.PhoneNumber}.";
             Notify?.Invoke(notificationMsg);
         }
