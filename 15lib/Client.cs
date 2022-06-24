@@ -28,7 +28,7 @@ namespace _15lib
         {
             var a = new T();
             ClientAccounts.Add(a);
-            string notificationMsg = $"{DateTime.Now.ToShortTimeString()}a: " +
+            string notificationMsg = $"{DateTime.Now.ToShortTimeString()}: " +
                 $"Открыт {typeof(T)} с id{a.Id} для клиента {this.PhoneNumber}.";
             Notify?.Invoke(notificationMsg);
         }
