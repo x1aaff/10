@@ -1,0 +1,46 @@
+﻿<Window x:Class="_17.Window2"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_17"
+        mc:Ignorable="d"
+        Title="Window2" Height="300" Width="400">
+    <Window.Resources>
+        <Style TargetType="TextBlock" x:Key="TextBlockStyle">
+            <Setter Property="Grid.Column" Value="0"/>
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="Margin" Value="10" />
+        </Style>
+
+        <Style TargetType="TextBox" x:Key="TextBoxStyle">
+            <Setter Property="Grid.Column" Value="1" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="Margin" Value="10" />
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Email" Style="{StaticResource TextBlockStyle}"/>
+        <TextBlock Grid.Row="1" Text="Product Code" Style="{StaticResource TextBlockStyle}"/>
+        <TextBlock Grid.Row="2" Text="Product Name" Style="{StaticResource TextBlockStyle}"/>
+
+        <TextBox Grid.Row="0" x:Name="tbPEmail" Style="{StaticResource TextBoxStyle}"/>
+        <TextBox Grid.Row="1" x:Name="tbPCode" Style="{StaticResource TextBoxStyle}"/>
+        <TextBox Grid.Row="2" x:Name="tbPName" Style="{StaticResource TextBoxStyle}"/>
+
+        <Button Content="Dismiss" Grid.Column="0" Grid.Row="5" Margin="10" FontSize="20" x:Name="disBtn"/>
+        <Button Content="Add" Grid.Column="1" Grid.Row="5" Margin="10" FontSize="20" x:Name="addBtn"/>
+    </Grid>
+</Window>
